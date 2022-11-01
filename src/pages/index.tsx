@@ -5,9 +5,11 @@ import internal from "stream";
 import Navbar from "../components/ui/navbar";
 import PokemonCard from "../components/ui/pokemoncard";
 import { Pokemon } from "../components/pokemons/pokemon_item";
+import { useState } from "react";
+import { fetchPokemons } from "@/components/pokemons/pokemon_list";
 
 export default function Home({
-  pokemons,
+  initial_pokemons,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   <Head>
     <title>Pokedex</title>
@@ -18,9 +20,12 @@ export default function Home({
     <link rel="icon" href="/favicon.ico" />
   </Head>
 
+  const [pokemons, setPosts] = useState(initial_pokemons);
+
   return (
     <div className="max-w-5xl mx-auto">
       <Navbar />
+
       <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
         {pokemons.map((pokemon: Pokemon) => (
           <PokemonCard
@@ -30,40 +35,25 @@ export default function Home({
           />
         ))}
       </div>
+
+      <button onClick={async () => {
+        const newPosts = await fetchPokemons(pokemons.length);
+        setPosts([...pokemons, ...newPosts]);
+      }}
+        type="button">
+        Load more
+      </button>
+      
     </div>
   );
 };
 
 export async function getStaticProps() {
-  var pokemons: Pokemon[] = []
-  const url = "https://pokeapi.co/api/v2/pokemon/?limit=20"
-  const response = await fetch(url);
-
-  if (response.status == 404 || response.statusText == 'Not Found') {
-    console.log('Failed response...');
-    return {
-      props: {
-        pokemons,
-      },
-    };
-  }
-
-  const response_json = await response.json();
-
-  for (var i = 0; i < response_json.results.length; i++) {
-
-    const pokemon: Pokemon = {
-      id: response_json.results[i].url.split('/').at(-2),
-      name: response_json.results[i].name,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${i}.svg`
-    };
-
-    pokemons.push(pokemon);
-  };
+  const initial_pokemons: Pokemon[] = await fetchPokemons(0);
 
   return {
     props: {
-      pokemons,
+      initial_pokemons,
     },
   };
 };
