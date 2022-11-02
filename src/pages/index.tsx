@@ -6,7 +6,7 @@ import Navbar from "../components/ui/navbar";
 import PokemonCard from "../components/ui/pokemoncard";
 import { Pokemon } from "../components/pokemons/pokemon_item";
 import { useState } from "react";
-import { fetchPokemons } from "@/components/pokemons/pokemon_list";
+import { fetchPokemons } from "./api/pokemon_list";
 
 export default function Home({
   initial_pokemons,
@@ -23,8 +23,7 @@ export default function Home({
   const [pokemons, setPosts] = useState(initial_pokemons);
 
   return (
-    <div className="max-w-5xl mx-auto">
-      <Navbar />
+    <div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
         {pokemons.map((pokemon: Pokemon) => (

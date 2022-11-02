@@ -4,7 +4,7 @@ import { Pokemon } from "../pokemons/pokemon_item";
 
 const PokemonCard = ({ id, name, image }: Pokemon) => {
     return (
-        <Link href={`https://pokeapi.co/api/v2/pokemon/${id}`}>
+        <Link href={`/${id}/`}>
             <a className={styles.card}>
                 <h3>{name} &rarr;</h3>
                 <p>{id}</p>

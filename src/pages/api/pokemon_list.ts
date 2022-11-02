@@ -1,4 +1,4 @@
-import { Pokemon } from "./pokemon_item";
+import { Pokemon } from "@/components/pokemons/pokemon_item";
 
 export async function fetchPokemons(offset_pokemon:number) {
     var pokemons: Pokemon[] = []
