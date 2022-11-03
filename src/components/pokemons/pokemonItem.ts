@@ -5,8 +5,12 @@ export interface Pokemon {
     image: string;
 }
 
-export interface Pokemon_details {
+export interface PokemonDetails {
     id: string;
     name: string;
     image: string;
+    abilities: Array<string>;
+    baseExperience: string;
+    height: string;
+    weight: string;
 }

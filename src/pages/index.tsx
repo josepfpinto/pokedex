@@ -2,57 +2,57 @@ import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import Head from 'next/head';
 import Image from 'next/image';
 import internal from "stream";
-import Navbar from "../components/ui/navbar";
-import PokemonCard from "../components/ui/pokemoncard";
-import { Pokemon } from "../components/pokemons/pokemon_item";
-import { useState } from "react";
-import { fetchPokemons } from "./api/pokemon_list";
+import PokemonCard from "../components/ui/pokemonCard";
+import { Pokemon } from "../components/pokemons/pokemonItem";
+import { Fragment, useState } from "react";
+import { FetchPokemons } from "./api/pokemonList";
 
 export default function Home({
-  initial_pokemons,
+  initialPokemons,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  <Head>
-    <title>Pokedex</title>
-    <meta
-      name="description"
-      content="All your Pokémons in one place"
-    />
-    <link rel="icon" href="/favicon.ico" />
-  </Head>
-
-  const [pokemons, setPosts] = useState(initial_pokemons);
+  const [pokemons, setPosts] = useState(initialPokemons);
 
   return (
-    <div>
+    <Fragment>
+      <Head>
+        <title>Pokedex</title>
+        <meta
+          name="description"
+          content="All your Pokémons in one place"
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
-        {pokemons.map((pokemon: Pokemon) => (
-          <PokemonCard
-            id={pokemon.id}
-            name={pokemon.name}
-            image={pokemon.image}
-          />
-        ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
+          {pokemons.map((pokemon: Pokemon) => (
+            <PokemonCard
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.image}
+            />
+          ))}
+        </div>
+
+        <button onClick={async () => {
+          const newPokemons: Pokemon[] = await FetchPokemons(pokemons.length);
+          setPosts([...pokemons, ...newPokemons]);
+        }}
+          type="button">
+          Load more
+        </button>
+
       </div>
-
-      <button onClick={async () => {
-        const newPosts = await fetchPokemons(pokemons.length);
-        setPosts([...pokemons, ...newPosts]);
-      }}
-        type="button">
-        Load more
-      </button>
-      
-    </div>
+    </Fragment>
   );
 };
 
 export async function getStaticProps() {
-  const initial_pokemons: Pokemon[] = await fetchPokemons(0);
+  const initialPokemons: Pokemon[] = await FetchPokemons(0);
 
   return {
     props: {
-      initial_pokemons,
+      initialPokemons: initialPokemons,
     },
   };
 };
