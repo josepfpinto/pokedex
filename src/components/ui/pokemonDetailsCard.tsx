@@ -1,6 +1,6 @@
+import { PokemonDetails } from "@/pokedexTypes";
 import Link from "next/link";
 import styles from "../../styles/pokemon.module.css";
-import { PokemonDetails } from "../pokemons/pokemonItem";
 
 const PokemonDetailsCard = ({ id, name, image, abilities, baseExperience, height, weight }: PokemonDetails) => {
     return (

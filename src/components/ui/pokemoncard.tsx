@@ -1,6 +1,7 @@
+import { Pokemon } from "@/pokedexTypes";
 import Link from "next/link";
 import styles from "../../styles/pokemon.module.css";
-import { Pokemon } from "../pokemons/pokemonItem";
+
 
 const PokemonCard = ({ id, name, image }: Pokemon) => {
     return (

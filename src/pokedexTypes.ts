@@ -1,11 +1,11 @@
 
-export interface Pokemon {
+export type Pokemon = {
     id: string;
     name: string;
     image: string;
 }
 
-export interface PokemonDetails {
+export type PokemonDetails = {
     id: string;
     name: string;
     image: string;
@@ -13,4 +13,8 @@ export interface PokemonDetails {
     baseExperience: string;
     height: string;
     weight: string;
+}
+
+export type PokemonsState = {
+    pokemonList: Pokemon[],
 }

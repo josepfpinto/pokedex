@@ -1,4 +1,4 @@
-import { Pokemon } from "@/components/pokemons/pokemonItem";
+import { Pokemon } from "@/pokedexTypes";
 
 export async function FetchPokemons(offsetPokemon:number) {
     let pokemons: Pokemon[] = []
@@ -13,7 +13,6 @@ export async function FetchPokemons(offsetPokemon:number) {
     const responseJson = await response.json();
 
     for (let i = 0; i < responseJson.results.length; i++) {
-
         const pokemon: Pokemon = {
             id: responseJson.results[i].url.split('/').at(-2),
             name: responseJson.results[i].name,

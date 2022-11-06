@@ -1,16 +1,26 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import type { InferGetStaticPropsType } from "next";
 import Head from 'next/head';
 import Image from 'next/image';
 import internal from "stream";
 import PokemonCard from "../components/ui/pokemonCard";
-import { Pokemon } from "../components/pokemons/pokemonItem";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { FetchPokemons } from "./api/pokemonList";
+import { useDispatch } from 'react-redux';
+import { getpokemonListState, set, add } from "../store/pokemonListSlice";
+import { useSelector } from "@/store";
+import { Pokemon } from "@/pokedexTypes";
 
 export default function Home({
   initialPokemons,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const [pokemons, setPosts] = useState(initialPokemons);
+  const dispatch = useDispatch();
+  dispatch(set(initialPokemons));
+  const pokemons = useSelector(getpokemonListState).pokemonList;
+
+  const loadMore = async () => {
+    const newPokemons: Pokemon[] = await FetchPokemons(pokemons.length);
+    dispatch(add(newPokemons));
+  };
 
   return (
     <Fragment>
@@ -18,12 +28,11 @@ export default function Home({
         <title>Pokedex</title>
         <meta
           name="description"
-          content="All your Pokémons in one place"
+          // content="All your Pokémons in one place"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 space-x-5 space-y-5">
           {pokemons.map((pokemon: Pokemon) => (
             <PokemonCard
@@ -33,15 +42,11 @@ export default function Home({
             />
           ))}
         </div>
-
-        <button onClick={async () => {
-          const newPokemons: Pokemon[] = await FetchPokemons(pokemons.length);
-          setPosts([...pokemons, ...newPokemons]);
-        }}
-          type="button">
+        <button onClick={loadMore} type="button">
           Load more
         </button>
-
+        <br />
+        <br />
       </div>
     </Fragment>
   );

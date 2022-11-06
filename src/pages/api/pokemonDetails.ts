@@ -1,4 +1,4 @@
-import { Pokemon, PokemonDetails } from "@/components/pokemons/pokemonItem";
+import { PokemonDetails } from "@/pokedexTypes";
 
 export async function FetchPokemon(id: string) {
     const url: string = `https://pokeapi.co/api/v2/pokemon/${id}`

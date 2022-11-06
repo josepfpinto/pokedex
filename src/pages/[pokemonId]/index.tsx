@@ -1,10 +1,10 @@
-import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
+import type { InferGetStaticPropsType } from "next";
 import Image from 'next/image';
 import { FetchPokemon } from "@/pages/api/pokemonDetails";
 import PokemonDetailsCard from "@/components/ui/pokemonDetailsCard";
-import { PokemonDetails } from "@/components/pokemons/pokemonItem";
 import { Fragment } from "react";
 import Head from 'next/head';
+import { PokemonDetails } from "@/pokedexTypes";
 
 export default function PokemonDetailsPage({
   pokemonData,
