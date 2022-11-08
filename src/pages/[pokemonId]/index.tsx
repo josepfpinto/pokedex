@@ -34,7 +34,7 @@ export default function PokemonDetailsPage({
 };
 
 export async function getStaticPaths() {
-  const ids: Array<number> = Array.from({ length: 20 }, (e, i) => i);
+  const ids: Array<number> = Array.from({ length: 21 }, (e, i) => i);
   return {
     fallback: true,
     paths: ids.map(id => ({ params: { pokemonId: id.toString() } })),
