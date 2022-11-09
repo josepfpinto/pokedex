@@ -2,6 +2,7 @@ import { Pokemon } from "@/pokedexTypes";
 import { add, getpokemonListState } from "../../store/pokemonListSlice";
 import { useDispatch, useSelector } from "@/store";
 import { FetchPokemons } from "@/pages/api/pokemonList";
+import styles from "../../styles/pokemon.module.css";
 
 export default function ButtonMore() {
     const dispatch = useDispatch();
