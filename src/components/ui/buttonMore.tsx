@@ -14,7 +14,7 @@ export default function ButtonMore() {
     };
 
     return (
-        <button onClick={loadMore} type="button" className="rounded-full font-light mx-auto px-6 py-1 text-slate-900 bg-slate-300">
+        <button onClick={loadMore} type="button" className="rounded-full font-light mx-auto px-8 py-2 text-gray-50 bg-slate-700 hover:bg-slate-500">
             Load more
         </button>
     );

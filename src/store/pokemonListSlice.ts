@@ -19,6 +19,13 @@ export const pokemonListSlice = createSlice({
             }
         },
 
+        reset: (
+            state: Draft<typeof initialState>,
+            action: PayloadAction<typeof initialState.pokemonList>
+        ) => {
+            state.pokemonList = action.payload;
+        },
+
         add: (
             state: Draft<typeof initialState>,
             action: PayloadAction<typeof initialState.pokemonList>
@@ -29,5 +36,5 @@ export const pokemonListSlice = createSlice({
 });
 
 export const getpokemonListState = (state: { pokemons: PokemonsState }) => state.pokemons;
-export const { set, add } = pokemonListSlice.actions;
+export const { set, add, reset } = pokemonListSlice.actions;
 export default pokemonListSlice.reducer;

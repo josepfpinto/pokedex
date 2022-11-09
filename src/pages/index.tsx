@@ -35,7 +35,7 @@ export default function Home({
 };
 
 export async function getStaticProps() {
-  const initialPokemons: Pokemon[] = await FetchPokemons(0);
+  const initialPokemons: Pokemon[] = await FetchPokemons();
 
   return {
     props: {
