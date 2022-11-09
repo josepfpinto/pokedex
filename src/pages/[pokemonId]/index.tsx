@@ -23,6 +23,7 @@ export default function PokemonDetailsPage({
       <PokemonDetailsCard
         id={pokemonData.id}
         name={pokemonData.name}
+        species={pokemonData.species}
         image={pokemonData.image}
         abilities={pokemonData.abilities}
         baseExperience={pokemonData.baseExperience}

@@ -7,6 +7,7 @@ export async function FetchPokemon(id: string) {
     let pokemon: PokemonDetails = {
         id: id,
         name: "",
+        species: "",
         image: "",
         abilities: [],
         baseExperience: "",
@@ -22,6 +23,7 @@ export async function FetchPokemon(id: string) {
     const responseJson = await response.json();
 
     pokemon.name = responseJson.name;
+    pokemon.species = responseJson.species.name;
     pokemon.image = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
     pokemon.baseExperience = responseJson.base_experience;
     pokemon.height = responseJson.height;

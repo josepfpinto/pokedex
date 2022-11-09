@@ -3,7 +3,7 @@
   }
   
   .card {
-    @apply relative m-3 max-w-xs p-0 md:w-11/12 no-underline overflow-hidden rounded-lg bg-slate-700 transition-all duration-150 ease-in-out;
+    @apply relative m-3 max-w-xs p-0 md:w-11/12 no-underline overflow-hidden rounded-lg bg-slate-700;
   }
 
     .image {
@@ -28,18 +28,31 @@
     }
   }
 
-.carddetails {
-  @apply relative m-3 max-w-xs p-0 no-underline overflow-hidden rounded-lg bg-slate-700 flex flex-col space-y-3 pb-10 transition-all duration-150 ease-in-out;
+.cardDetails_image {
+  @apply relative m-3 p-0 grow;
 }
 
   .image {
-    @apply h-64 mx-auto mb-5 p-3;
+    @apply h-96 mx-auto mb-5 p-3;
   }
 
-.carddetails h1 {
-  @apply text-center text-2xl relative font-semibold text-gray-50 pb-5;
+.cardDetails_mainInfo {
+  @apply relative m-3 p-0 basis-3/5;
 }
 
-.carddetails p {
-  @apply text-sm font-thin bottom-2 left-5 relative text-gray-50;
+.cardDetails_mainInfo h1 {
+  @apply text-center text-3xl md:pt-14 font-semibold text-gray-50 pb-5;
 }
+
+.cardDetails_mainInfo h2 {
+  @apply text-lg font-semibold text-gray-50 pb-5;
+}
+
+.cardDetails_mainInfo p {
+  @apply text-sm font-thin bottom-2 left-5 text-gray-50;
+}
+
+.cardDetails_mainInfo li {
+  @apply text-sm font-thin bottom-2 left-5 text-gray-50;
+}
+
