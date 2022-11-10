@@ -3,11 +3,10 @@ import Head from 'next/head';
 import { Fragment } from "react";
 import { FetchPokemons } from "./api/pokemonList";
 import { useDispatch } from 'react-redux';
-import { getpokemonListState, set, add } from "../store/pokemonListSlice";
-import { useSelector } from "@/store";
+import { set } from "../store/pokemonListSlice";
 import { Pokemon } from "@/pokedexTypes";
-import Grid from "@/components/ui/grid";
-import ButtonMore from "@/components/ui/buttonMore";
+import { Grid } from "@/components/ui/grid";
+import { ButtonMore } from "@/components/ui/buttonMore";
 
 export default function Home({
   initialPokemons,

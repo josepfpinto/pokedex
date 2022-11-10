@@ -1,5 +1,4 @@
 import type { InferGetStaticPropsType } from "next";
-import Image from 'next/image';
 import { FetchPokemon } from "@/pages/api/pokemonDetails";
 import PokemonDetailsCard from "@/components/ui/pokemonDetailsCard";
 import { Fragment } from "react";

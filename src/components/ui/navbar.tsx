@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import SearchBar from "./searchBar";
+import { SearchBar } from "./searchBar";
 import styles from "../../styles/pokemon.module.css";
 
-const Navbar = () => {
+export const Navbar = () => {
     const router: NextRouter = useRouter();
     const inHomepage: boolean = router.pathname === "/";
     let button_searchBar
@@ -27,5 +27,3 @@ const Navbar = () => {
         </nav>
     );
 };
-
-export default Navbar;

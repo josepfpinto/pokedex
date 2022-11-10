@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "../../styles/pokemon.module.css";
 
 
-const PokemonCard = ({ id, name, image }: Pokemon) => {
+export const PokemonCard = ({ id, name, image }: Pokemon) => {
     return (
         <Link href={`/${id}/`}>
             <a className={styles.card}>
@@ -13,5 +13,3 @@ const PokemonCard = ({ id, name, image }: Pokemon) => {
         </Link>
     );
 };
-
-export default PokemonCard;

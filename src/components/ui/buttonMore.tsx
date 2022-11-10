@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "@/store";
 import { FetchPokemons } from "@/pages/api/pokemonList";
 import styles from "../../styles/pokemon.module.css";
 
-export default function ButtonMore() {
+export function ButtonMore() {
     const dispatch = useDispatch();
     const pokemons = useSelector(getpokemonListState).pokemonList;
     let buttonMore

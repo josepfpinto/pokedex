@@ -1,9 +1,9 @@
 import { Pokemon } from "@/pokedexTypes";
-import PokemonCard from "@/components/ui/pokemonCard";
+import { PokemonCard } from "@/components/ui/pokemonCard";
 import { getpokemonListState } from "../../store/pokemonListSlice";
 import { useSelector } from "@/store";
 
-export default function Grid() {
+export function Grid() {
     const pokemons = useSelector(getpokemonListState).pokemonList;
     const emptyList = pokemons.length == 0
     let myGrid

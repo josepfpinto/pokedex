@@ -4,7 +4,7 @@ import { useDispatch } from "@/store";
 import { useState } from "react";
 import { SearchPokemon } from "@/pages/api/pokemonSearch";
 
-export default function SearchBar() {
+export function SearchBar() {
     const dispatch = useDispatch();
     const [query, setQuery] = useState("");
 

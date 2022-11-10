@@ -1,5 +1,5 @@
 import '@/styles/globals.css';
-import Navbar from "../components/ui/navbar";
+import { Navbar } from "../components/ui/navbar";
 import { Provider } from 'react-redux';
 import { store } from '@/store';
 import { AppProps } from 'next/app';
