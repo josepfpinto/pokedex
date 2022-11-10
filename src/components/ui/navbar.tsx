@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import SearchBar from "./searchBar";
+import styles from "../../styles/pokemon.module.css";
 
 const Navbar = () => {
     const router: NextRouter = useRouter();
@@ -11,7 +12,7 @@ const Navbar = () => {
         button_searchBar = <SearchBar />;
     } else {
         button_searchBar = <Link href="/">
-            <button type="button" className="rounded-full font-light mx-auto px-6 py-1 text-gray-50 bg-slate-700 hover:bg-slate-500">
+            <button type="button" className={`${styles.buttonNavbar}`}>
                 Return
             </button>
         </Link>;

@@ -14,8 +14,7 @@ export default function SearchBar() {
 
         const searchName: string = query;
         const newPokemons: Pokemon[] = await SearchPokemon(searchName);
-        console.log("pokemon found:");
-        console.log(newPokemons);
+
         dispatch(reset(newPokemons));
     };
 

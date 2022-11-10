@@ -14,15 +14,13 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const dispatch = useDispatch();
   dispatch(set(initialPokemons));
-  const pokemons = useSelector(getpokemonListState).pokemonList;
 
   return (
     <Fragment>
       <Head>
         <title>Pokedex</title>
         <meta
-          name="description"
-        // content="All your Pokémons in one place"
+          name="All your Pokémons in one place"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

@@ -1,3 +1,11 @@
+.buttonBody{
+  @apply rounded-full font-light mx-auto px-8 py-2 text-gray-50 bg-slate-700 hover:bg-slate-500
+}
+
+.buttonNavbar{
+  @apply rounded-full font-light mx-auto px-6 py-1 text-gray-50 bg-slate-700 hover:bg-slate-500
+}
+
 .grid {
     @apply flex items-center justify-center flex-wrap max-w-3xl mt-12;
   }
