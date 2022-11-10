@@ -1,8 +1,7 @@
 import { Pokemon } from "@/pokedexTypes";
-import { add, getpokemonListState } from "../../store/pokemonListSlice";
+import { reset, add, getpokemonListState } from "../../store/pokemonListSlice";
 import { useDispatch, useSelector } from "@/store";
 import { FetchPokemons } from "@/pages/api/pokemonList";
-import Link from "next/link";
 import styles from "../../styles/pokemon.module.css";
 
 export default function ButtonMore() {
@@ -15,12 +14,15 @@ export default function ButtonMore() {
         dispatch(add(newPokemons));
     };
 
-    if (pokemons.length == 0) {
-        buttonMore = <Link href="/">
-            <button type="button" className={`${styles.buttonBody}`}>
-                Return
-            </button>
-        </Link>;
+    const resetAction = async () => {
+        const newPokemons: Pokemon[] = await FetchPokemons(0);
+        dispatch(reset(newPokemons));
+    };
+
+    if (pokemons.length <= 1) {
+        buttonMore = <button onClick={resetAction} type="button" className={`${styles.buttonBody}`}>
+            Return
+        </button>;
     } else {
         buttonMore = <button onClick={loadMore} type="button" className={`${styles.buttonBody}`}>
             Load more
