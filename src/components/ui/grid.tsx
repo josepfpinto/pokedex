@@ -1,5 +1,5 @@
 import { Pokemon } from "@/pokedexTypes";
-import { PokemonCard } from "@/components/ui/pokemonCard";
+import { PokemonCard } from "@/components/ui/singlePokemonCard";
 import { getpokemonListState } from "../../store/pokemonListSlice";
 import { useSelector } from "@/store";
 
