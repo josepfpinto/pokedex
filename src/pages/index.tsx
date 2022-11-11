@@ -1,12 +1,12 @@
-import type { InferGetStaticPropsType } from "next";
+import type { InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
-import { Fragment } from "react";
-import { FetchPokemons } from "./api/pokemonList";
+import { Fragment } from 'react';
+import { FetchPokemons } from './api/pokemonList';
 import { useDispatch } from 'react-redux';
-import { set } from "../store/pokemonListSlice";
-import { Pokemon } from "@/pokedexTypes";
-import { Grid } from "@/components/ui/grid";
-import { ButtonMore } from "@/components/ui/buttonMore";
+import { set } from '../store/pokemonListSlice';
+import { Pokemon } from '@/pokedexTypes';
+import { Grid } from '@/components/ui/grid';
+import { ButtonMore } from '@/components/ui/buttonMore';
 
 export default function Home({
   initialPokemons,
@@ -18,9 +18,7 @@ export default function Home({
     <Fragment>
       <Head>
         <title>Pokedex</title>
-        <meta
-          name="All your Pokémons in one place"
-        />
+        <meta name="All your Pokémons in one place" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex flex-col space-y-10 pb-10">
@@ -29,7 +27,7 @@ export default function Home({
       </div>
     </Fragment>
   );
-};
+}
 
 export async function getStaticProps() {
   const initialPokemons: Pokemon[] = await FetchPokemons();
@@ -39,4 +37,4 @@ export async function getStaticProps() {
       initialPokemons: initialPokemons,
     },
   };
-};
+}
