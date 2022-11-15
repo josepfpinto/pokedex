@@ -8,13 +8,17 @@ import { PokemonDetails } from '@/pokedexTypes';
 export default function PokemonDetailsPage({
   pokemonData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Fragment>
-      <Head>
-        <title>Pokemon details</title>
-        <meta name="description" content={pokemonData.name} />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+  let pokemonCard;
+
+  if (pokemonData === undefined) {
+    pokemonCard = (
+      <div className="grid place-items-center space-y-32">
+        <p> </p>
+        <h2 className="text-gray-50">Sorry, something went wrong...</h2>
+      </div>
+    );
+  } else {
+    pokemonCard = (
       <PokemonDetailsCard
         id={pokemonData.id}
         name={pokemonData.name}
@@ -25,6 +29,20 @@ export default function PokemonDetailsPage({
         height={pokemonData.height}
         weight={pokemonData.weight}
       />
+    );
+  }
+
+  return (
+    <Fragment>
+      <Head>
+        <title>Pokemon details</title>
+        <meta
+          name="description"
+          content={pokemonData === undefined ? `` : pokemonData.name}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      {pokemonCard}
     </Fragment>
   );
 }

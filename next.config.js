@@ -7,7 +7,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'raw.githubusercontent.com',
-        port: '',
+        port: '80',
         pathname:
           '/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/**',
       },
