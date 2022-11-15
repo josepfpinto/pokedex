@@ -15,12 +15,18 @@ export async function FetchPokemon(id: string) {
     weight: ``,
   };
 
-  if (response.status == 404 || response.statusText == `Not Found`) {
+  if (response.status == 404 || response.statusText === `Not Found`) {
     console.log(`Failed response...`);
     return pokemon;
   }
 
   const responseJson = await response.json();
+
+  if (responseJson === undefined) {
+    console.log(`responseJson is undifined...`);
+    console.log(responseJson);
+    return pokemon;
+  }
 
   pokemon.name = responseJson.name;
   pokemon.species = responseJson.species.name;
